@@ -5,3 +5,55 @@
   %p ログインしていません
   = link_to "ログイン", new_user_session_path 
   = link_to "新規登録", new_user_path 
+
+.Event
+  .Event__top
+    %h1.Event__top--title 新着イベント情報
+  .Event__contents
+    .Event__content 
+      .Event__content--top
+        .Event-title ■第1回ベスケットボール大会 
+      .Event__content--wrap
+        .content-image
+          = image_tag "hanamichi.jpg", alt: "テスト画像", class: "content-image__file"
+        .content-right
+          .content-date 10/10 (土)
+          %h2.content-host 主宰: 桜木 花道
+          = link_to "詳細を見る", "#", class: "content-show"
+    .Event__content 
+      .Event__content--top
+        .Event-title ■第2回ベスケットボール大会 
+      .Event__content--wrap
+        = image_tag "anzai.jpg", alt: "テスト画像", class: "content-image"
+        .content-right
+          .content-date 10/11 (日)
+          %h2.content-host 主宰: 安西 先生
+          = link_to "詳細を見る", "#", class: "content-show"
+    .Event__content 
+      .Event__content--top
+        .Event-title ■第3回ベスケットボール大会 
+      .Event__content--wrap
+        = image_tag "mitsui.jpg", alt: "テスト画像", class: "content-image"
+        .content-right
+          .content-date 10/12 (月)
+          %h2.content-host 主宰: ミッチー
+          = link_to "詳細を見る", "#", class: "content-show"
+    .Event__content 
+      .Event__content--top
+        .Event-title ■第3回ベスケットボール大会 
+      .Event__content--wrap
+        = image_tag "mitsui.jpg", alt: "テスト画像", class: "content-image"
+        .content-right
+          .content-date 10/12 (月)
+          %h2.content-host 主宰: ミッチー
+          = link_to "詳細を見る", "#", class: "content-show"
+    .Event__content 
+      .Event__content--top
+        .Event-title ■第3回ベスケットボール大会 
+      .Event__content--wrap
+        = image_tag "mitsui.jpg", alt: "テスト画像", class: "content-image"
+        .content-right
+          .content-date 10/12 (月)
+          %h2.content-host 主宰: ミッチー
+          = link_to "詳細を見る", "#", class: "content-show"
+.Footer-cover
