@@ -1,2 +1,7 @@
+.Login
+  = link_to user_twitter_omniauth_authorize_path, class: "Login__link", method: :post do
+    .Login__twitter 
+      = icon("fab", "twitter", class: "Login__twitter--icon")
+      %h3.Login__twitter--text サロンアカウントでログイン
 
-= link_to "twitterでログイン", user_twitter_omniauth_authorize_path, method: :post
+/, method: :post
