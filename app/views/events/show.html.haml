@@ -1,0 +1,32 @@
+.Detail-wrapper 
+  .Detail
+    .Detail__top
+      %h2 イベント概要
+    -if @event.image.attached?
+      = image_tag @event.image, class: "Detail__image"
+    - else
+      = image_tag "entame.jpg", class: "Detail__image"
+    %p.Detail__name
+      = "■#{@event.name}"
+      - if @event.enviroment_id == 2
+        (オフライン)
+      - else
+        (オンライン)
+    .Detail__owner
+      %p.Detail__owner--name
+        作成者：
+        = link_to "https://twitter.com/#{@event.user.nickname}", class: "twitter-name" do
+          = icon("fab", "twitter")
+          = "#{@event.user.name}"
+    .Detail__date
+      %p.Detail__date--text 開催日時
+      .Detail__date--times
+        %p.start-date= "#{@event.start_at.strftime('%Y年%m月%d日')}(#{@weekday})"
+        %p.start-time= "#{@event.start_time.strftime('%H時%M分')}〜#{@event.finish_time.strftime('%H時%M分')}"
+    .Detail__exp
+      %h3.Detail__exp--title イベント概要
+      %p.Detail__exp--text= safe_join(@event.explanation.split("\n"), tag(:br))
+    .Detail__option
+      %p.Detail__option--notice 気になる
+      %p.Detail__option--tweet ツイート
+.Footer-cover

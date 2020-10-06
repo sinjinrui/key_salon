@@ -1,10 +1,20 @@
 .Footer 
   .Footer__contents 
-    = link_to "#", class: "Footer__content" do
+    = link_to root_path, class: "Footer__content" do
       = icon("fas", "house-user", class: "menu-icon home-icon")
-    = link_to "#", class: "Footer__content" do
-      = icon("fas", "user-alt", class: "menu-icon user-icon")
+      %li.menu-text ホーム
+    - if user_signed_in?
+      = link_to user_path(current_user.id), class: "Footer__content" do
+        = icon("fas", "user-alt", class: "menu-icon user-icon")
+        %li.menu-text マイページ
+    -else
+      = link_to new_user_session_path, class: "Footer__content" do
+        = icon("fas", "user-alt", class: "menu-icon user-icon")
+        %li.menu-text マイページ
+      
     = link_to "#", class: "Footer__content" do
       = icon("fas", "calendar-alt", class: "menu-icon calender-icon")
-    = link_to "#", class: "Footer__content" do
+      %li.menu-text カレンダー
+    = link_to new_event_path, class: "Footer__content" do
       = icon("fas", "plus", class: "menu-icon plus-icon")
+      %li.menu-text イベント作成

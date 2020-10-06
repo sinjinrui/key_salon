@@ -4,8 +4,23 @@
   .Header__right
     = link_to "#", class: "Header__right--collect" do
       = icon("fas", "search", class: "search-icon")
-    = link_to "#", class: "Header__right--menu" do
-      %span.menu-line.line1
-      %span.menu-line.line2
-      %span.menu-line.line3
+    %ul.Header__right--menu
+      %li.menu-line.line1
+      %li.menu-line.line2
+      %li.menu-line.line3
 .Cover
+
+.Bc-menu
+  .Bc-menu__close
+    %p.line-up.Bc-menu__close--btn
+    %p.line-down.Bc-menu__close--btn
+
+.Menu
+  .Menu-wrapper
+    %h2.Menu-title メニュー
+    = link_to "このサイトについて", "#", class: "Menu-list"
+    - if user_signed_in?
+      %p.Menu-list= current_user.name
+      = button_to "ログアウト", destroy_user_session_path, class: "Menu-list button_to", method: :delete
+    - else 
+      = link_to "ログイン", new_user_session_path, class: "Menu-list"

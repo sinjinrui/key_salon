@@ -6,14 +6,21 @@
   %li アカウント名
   = f.text_field :nickname
   %li メールアドレス
-  = f.email_field :email, autocomplete: true
+  = f.email_field :email
   %li プロフィール画像URL 
   = f.text_field :image
-  %li パスワード
-  = f.password_field :password 
-  %li 確認用パスワード
-  = f.password_field :password_confirmation 
+  -if @sns_id.present?
+    = hidden_field_tag :sns_auth, true
+  -else
+    -# %li パスワード
+    -# = f.password_field :password 
+    -# %li 確認用パスワード
+    -# = f.password_field :password_confirmation 
   = f.submit "登録する"
+  - if @user.errors.any?
+    %ul
+      - @user.errors.full_messages.each do |message|
+        %li= message
 
 
 -# = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|

@@ -55,7 +55,10 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'devise'
 gem "haml-rails", "~> 2.0"
 gem 'omniauth-twitter'
-gem 'omniauth-rails_csrf_protection'
+# gem 'omniauth-rails_csrf_protection'
 gem 'font-awesome-sass'
 gem 'dotenv-rails'
 gem 'pry-rails'
+gem 'jquery-rails'
+gem 'active_hash'
+gem 'mini_magick'
