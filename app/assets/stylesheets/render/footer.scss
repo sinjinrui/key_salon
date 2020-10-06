@@ -5,20 +5,35 @@
     bottom: 0;
     left: 0;
     width: 100vw;
-    height: 70px;
-    background-color: #ddeeee;
+    height: 50px;
+    border-top: 1px solid #999999;
+    background-color: #fff;
     display: flex;
     align-items: center;
+    transition: all 300ms ease;
     &__contents {
       width: 100%;
       display: flex;
       justify-content: space-around;
       .Footer__content {
         color: #000;
-        font-size: 24px;
+        font-size: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        &:hover {
+          opacity: 0.5;
+        }
+        .menu-text {
+          margin-top: 2px;
+          font-size: 10px;
+        }
       }
     }
   }
+
+  .Hide .Footer { bottom: -50px; }
+
   .Footer-cover {
     height: 70px;
     width: 100vw;

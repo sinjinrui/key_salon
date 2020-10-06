@@ -1,7 +1,7 @@
 
 = form_with model: @user, url: user_registration_path, local: true do |f|
   %h1 ユーザー登録
-  -# %li= "名前#{auth.info.name}"
+  %li 名前
   = f.text_field :name, autofocus: true 
   %li アカウント名
   = f.text_field :nickname
@@ -12,10 +12,10 @@
   -if @sns_id.present?
     = hidden_field_tag :sns_auth, true
   -else
-    %li パスワード
-    = f.password_field :password 
-    %li 確認用パスワード
-    = f.password_field :password_confirmation 
+    -# %li パスワード
+    -# = f.password_field :password 
+    -# %li 確認用パスワード
+    -# = f.password_field :password_confirmation 
   = f.submit "登録する"
   - if @user.errors.any?
     %ul

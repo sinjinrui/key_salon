@@ -1,0 +1,15 @@
+.My-page
+  .My-page__image
+    = image_tag "entame.jpg", class: "bg-image"
+    = image_tag "#{@user.image}", class: "my-image"
+  .My-page__profile
+    -# .My-page__profile--edit
+    -#   = link_to "編集", "#"
+    .My-page__profile--content
+      %li 名前
+      %li.hoge= @user.name
+      %li サロンアカウント
+      %li.huga= "@#{@user.nickname}"
+
+-# = render 'shared/event'
+      

@@ -5,17 +5,16 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :omniauthable, omniauth_providers: [:twitter]
   #:validatable,を抜いたらアドレス無しで通る。
 
-  password_REGEX = /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{6,100}\z/i
+  nickname_REGEX = /\A.*salon.*\z/i
 
   with_options presence: true do
     validates :name
-    validates :nickname
-    # validates :password, format: { with: password_REGEX }
+    validates :nickname, format: { with: nickname_REGEX, message: "サロン用アカウントを利用してください" }
   end
 
   validates :email, uniqueness: true
   
-
+  has_many :events
   has_many :sns_credentials
 
   def self.from_omniauth(auth)

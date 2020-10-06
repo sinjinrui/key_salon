@@ -1,4 +1,8 @@
 @media screen and (max-width: 600px) {
+
+  .offline{ background-color: #c45533; }
+  .online { background-color: #335ac4; }
+
   .Event {
     width: 100vw;
     display: flex;
@@ -21,7 +25,6 @@
       flex-direction: column;
       align-items: center;
       .Event__content {
-        background-color: #335ac4;
         width: 330px;
         height: 150px;
         margin-bottom: 20px;
@@ -61,6 +64,7 @@
             display: flex;
             flex-direction: column;
             align-items: flex-end;
+            .line-text { color: #fff;}
             .content-date {
               color: #fff;
             }
@@ -73,6 +77,24 @@
             }
           }
         }
+      }
+    }
+  }
+
+  .My-page {
+    width: 100vw;
+    &__image {
+      width: 100%;
+      position: relative;
+      .bg-image {
+        width: 100%;
+      }
+      .my-image {
+        position: absolute;
+        top: 30%;
+        left: 5%;
+        border-radius: 50%;
+        width: 30%;
       }
     }
   }

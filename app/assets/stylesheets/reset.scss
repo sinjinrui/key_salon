@@ -17,6 +17,18 @@ html{
   box-sizing: border-box;
 }
 
+li {
+  list-style: none;
+}
+
+.button_to {
+  background-color: #fff;
+  border-top: none;
+  border-right: none;
+  border-left: none;
+  cursor: pointer;
+}
+
 a {
   text-decoration: none;
 }
