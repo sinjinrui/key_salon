@@ -15,7 +15,7 @@
     .Detail__owner
       %p.Detail__owner--name
         作成者：
-        = link_to "https://twitter.com/#{@event.user.nickname}", class: "twitter-name" do
+        = link_to "https://twitter.com/#{@event.user.nickname}", class: "twitter-name", target: :_blank, rel: "noopener noreferrer" do
           = icon("fab", "twitter")
           = "#{@event.user.name}"
     .Detail__date
