@@ -14,7 +14,7 @@
         (オンライン)
     .Detail__owner
       %p.Detail__owner--name
-        作成者：
+        作成者
         = link_to "https://twitter.com/#{@event.user.nickname}", class: "twitter-name", target: :_blank, rel: "noopener noreferrer" do
           = icon("fab", "twitter")
           = "#{@event.user.name}"
@@ -23,10 +23,22 @@
       .Detail__date--times
         %p.start-date= "#{@event.start_at.strftime('%Y年%m月%d日')}(#{@weekday})"
         %p.start-time= "#{@event.start_time.strftime('%H時%M分')}〜#{@event.finish_time.strftime('%H時%M分')}"
+    .Detail__place 
+      %p.Detail__place--titlt 開催場所
+      .Detail__place--text
+        - if @event.place.include?("http")
+          = link_to "#{@event.place}", "#{@event.place}", target: :_blank, rel: "noopener noreferrer"
+        - else
+          %p= @event.place
     .Detail__exp
       %h3.Detail__exp--title イベント概要
       %p.Detail__exp--text= safe_join(@event.explanation.split("\n"), tag(:br))
     .Detail__option
-      %p.Detail__option--notice 気になる
-      %p.Detail__option--tweet ツイート
+      #like
+        = render partial: "shared/like", locals: { event: @event, like: @like }
+      = link_to "https://twitter.com/share?url=#{ request.url }&text=#{ @event.name }に参加しませんか？", class: "Detail__option--tweet" do
+        ツイート
+      - if user_signed_in? && (current_user.id == @event.user_id)
+        = link_to "編集する", edit_event_path(@event), class: "Detail__option--edit"
+        = link_to "削除する", event_path(@event), method: :delete, class: "Detail__option--delete"
 .Footer-cover

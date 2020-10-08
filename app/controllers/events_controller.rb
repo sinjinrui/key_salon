@@ -1,6 +1,6 @@
 class EventsController < ApplicationController
   before_action :authenticate_user!, only: [:new]
-  before_action :set_event, only: [:show]
+  before_action :set_event, only: [:show, :edit, :update, :destroy]
 
   def new 
     @event = Event.new
@@ -16,6 +16,28 @@ class EventsController < ApplicationController
   end
 
   def show 
+    if user_signed_in?
+      @like = Like.find_by(user_id: current_user.id, event_id: @event.id)
+    end
+  end
+
+  def edit
+  end
+
+  def update
+    if @event.update(event_params)
+      redirect_to root_path
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    if @event.destroy
+      redirect_to root_path
+    else
+      render :show
+    end
   end
 
   private

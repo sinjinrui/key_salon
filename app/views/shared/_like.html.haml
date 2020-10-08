@@ -1,0 +1,5 @@
+- if user_signed_in?
+  - if event.liked_by?(current_user, event)
+    = link_to "気になる", event_like_path(event.id, like.id), method: :delete, class: "Detail__option--notice", id: "unlike-btn", remote: true
+  - else
+    = link_to "気になる", event_likes_path(event.id), method: :post, class: "Detail__option--notice", id: "like-btn", remote: true

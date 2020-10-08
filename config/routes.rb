@@ -4,6 +4,12 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
   }
   root 'users#index'
-  resources :users, only: [:new, :show]
-  resources :events, only: [:new, :create, :show]
+  resources :users, only: [:new, :show] do
+    collection do
+      get :likes
+    end
+  end
+  resources :events, only: [:new, :create, :show, :edit, :update, :destroy] do
+    resources :likes, only: [:create, :destroy]
+  end
 end

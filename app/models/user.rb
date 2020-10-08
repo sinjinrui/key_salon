@@ -14,7 +14,8 @@ class User < ApplicationRecord
 
   validates :email, uniqueness: true
   
-  has_many :events
+  has_many :likes, dependent: :destroy
+  has_many :like_events, through: :likes, source: :event
   has_many :sns_credentials
 
   def self.from_omniauth(auth)

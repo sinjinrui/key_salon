@@ -10,6 +10,8 @@
       %li.hoge= @user.name
       %li サロンアカウント
       %li.huga= "@#{@user.nickname}"
-
--# = render 'shared/event'
-      
+.Event
+  .Event__top
+    %h1.Event__top--title 気になるイベント一覧
+  .Event__contents
+    = render partial: "shared/like_events", locals: { events: @events }
