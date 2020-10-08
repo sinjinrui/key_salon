@@ -13,4 +13,9 @@ class Event < ApplicationRecord
   end
 
   belongs_to :user
+  has_many :likes, dependent: :destroy
+
+  def liked_by?(user, event)
+    Like.where(user_id: user.id, event_id: event.id).exists?
+  end
 end
