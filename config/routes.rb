@@ -9,7 +9,10 @@ Rails.application.routes.draw do
       get :likes
     end
   end
-  resources :events, only: [:new, :create, :show, :edit, :update, :destroy] do
+  resources :events do
     resources :likes, only: [:create, :destroy]
+    collection do 
+      get "search"
+    end
   end
 end

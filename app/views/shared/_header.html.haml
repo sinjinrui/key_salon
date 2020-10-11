@@ -2,8 +2,6 @@
   .Header__left 
     = link_to "つながるサロン村(仮)", root_path, class: "Header__left--link"
   .Header__right
-    = link_to "#", class: "Header__right--collect" do
-      = icon("fas", "search", class: "search-icon")
     %ul.Header__right--menu
       %li.menu-line.line1
       %li.menu-line.line2
@@ -18,6 +16,10 @@
 .Menu
   .Menu-wrapper
     %h2.Menu-title メニュー
+    = form_with(url: search_events_path, local: true, method: :get, class: "search-form") do |f|
+      = f.text_field :keyword, placeholder: "イベントを検索", class: "search-input"
+      = button_tag type: "submit", class: "search-icon" do
+        = icon("fas", "search")
     = link_to "このサイトについて", "#", class: "Menu-list"
     - if user_signed_in?
       %p.Menu-list= current_user.name

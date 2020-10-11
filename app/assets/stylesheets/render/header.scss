@@ -25,7 +25,7 @@
       width: 80px;
       display: flex;
       align-items: center;
-      justify-content: space-around;
+      justify-content: flex-end;
       &--collect {
         font-size: 20px;
         color: #000;
@@ -78,6 +78,27 @@
         transform: rotate(-45deg);
       }
     }
+  }
+
+  .search-form {
+    display: flex;
+    position: relative;
+    margin-top: 4px;
+    margin-bottom: 8px;
+  }
+
+  .search-input {
+    width: 180px;
+  }
+
+  .search-icon {
+    position: absolute;
+    left: 150px;
+    top: 3px;
+    font-size: 20px;
+    border: none;
+    background: none;
+    cursor: pointer;
   }
 
   .Menu {

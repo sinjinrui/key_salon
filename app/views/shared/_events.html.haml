@@ -1,0 +1,39 @@
+.Event__contents
+  - if events.exists?
+    - events.first(20).each do |event|
+      - if event.enviroment_id == 2
+        .Event__content.offline
+          .Event__content--top 
+            .Event-title= "■#{event.name}"
+          .Event__content--wrap
+            .content-image
+              - if event.image.attached?
+                = image_tag event.image, class: "content-image__file"
+              - else
+                = image_tag "entame.jpg", class: "content-image__file"
+            .content-right
+              - if event.enviroment_id == 2
+                %p.line-text オフライン開催
+              - else
+                %p.line-text オンライン開催
+              .content-date= "#{event.start_at.strftime('%Y年%m月%d日')}(#{@wday[event.start_at.wday]})"
+              = link_to "詳細を見る", event_path(event.id), class: "content-show"
+      - else
+        .Event__content.online
+          .Event__content--top 
+            .Event-title= "■#{event.name}"
+          .Event__content--wrap
+            .content-image
+              - if event.image.attached?
+                = image_tag event.image, class: "content-image__file"
+              - else
+                = image_tag "entame.jpg", class: "content-image__file"
+            .content-right
+              - if event.enviroment_id == 2
+                %p.line-text オフライン開催
+              - else
+                %p.line-text オンライン開催
+              .content-date= "#{event.start_at.strftime('%Y年%m月%d日')}(#{@wday[event.start_at.wday]})"
+              = link_to "詳細を見る", event_path(event.id), class: "content-show"
+  - else
+    %p.event-nil 一致したイベントはありませんでした

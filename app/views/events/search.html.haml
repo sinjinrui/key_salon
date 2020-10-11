@@ -1,0 +1,5 @@
+.Event
+  .Event__top 
+    %h1.Event__top--title.search-word= "「#{@search}」を含むイベント一覧"
+  =render partial: "shared/events", locals: { events: @events }
+.Footer-cover

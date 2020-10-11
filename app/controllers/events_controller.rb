@@ -2,6 +2,9 @@ class EventsController < ApplicationController
   before_action :authenticate_user!, only: [:new]
   before_action :set_event, only: [:show, :edit, :update, :destroy]
 
+  def index
+  end
+
   def new 
     @event = Event.new
   end
@@ -38,6 +41,11 @@ class EventsController < ApplicationController
     else
       render :show
     end
+  end
+
+  def search
+    @events = Event.search(params[:keyword])
+    @search = params[:keyword]
   end
 
   private
