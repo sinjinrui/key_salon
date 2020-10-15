@@ -1,13 +1,14 @@
 !!!
 %html
   %head
+    %meta{:content => "width=device-width", :name => "viewport"}
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
     %title KeySalon
     = csrf_meta_tags
     = csp_meta_tag
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
-  %body
+  %body{"data-turbolinks" => "false"}
     = render 'shared/header'
     = render 'shared/footer'
     = yield

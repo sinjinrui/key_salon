@@ -12,9 +12,9 @@
         = icon("fas", "user-alt", class: "menu-icon user-icon")
         %li.menu-text マイページ
       
-    = link_to "#", class: "Footer__content" do
+    = link_to events_path, class: "Footer__content" do
       = icon("fas", "calendar-alt", class: "menu-icon calender-icon")
-      %li.menu-text カレンダー
+      %li.menu-text 予定表
     = link_to new_event_path, class: "Footer__content" do
       = icon("fas", "plus", class: "menu-icon plus-icon")
       %li.menu-text イベント作成

@@ -1,5 +1,14 @@
-.Login
-  = link_to user_twitter_omniauth_authorize_path, class: "Login__link", method: :post do
-    .Login__twitter 
-      = icon("fab", "twitter", class: "Login__twitter--icon")
-      %h3.Login__twitter--text サロンアカウントでログイン
+.wrapper
+  .Login
+    .login-wrapper
+      .login-inner
+        %h2 ログインの方法を選ぶ
+        -# = link_to new_user_registration_path, class: "Login__link email-link" do
+        -#   .Login__email
+        -#     = icon("fas", "envelope")
+        -#     %h3.Login__email--text メールアドレスでログイン
+        = link_to user_twitter_omniauth_authorize_path, class: "Login__link", method: :post do
+          .Login__twitter 
+            = icon("fab", "twitter", class: "Login__twitter--icon")
+            %h3.Login__twitter--text ツイッターアカウントでログイン
+    = render partial: "shared/side_bar"

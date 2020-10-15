@@ -18,4 +18,12 @@ class Event < ApplicationRecord
   def liked_by?(user, event)
     Like.where(user_id: user.id, event_id: event.id).exists?
   end
+
+  def self.search(search)
+    if search != ""
+      Event.where(['name LIKE(?) OR explanation LIKE(?) OR place LIKE(?)', "%#{search}%", "%#{search}%", "%#{search}%"])
+    else
+      Event.all
+    end
+  end
 end

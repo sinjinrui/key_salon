@@ -1,0 +1,11 @@
+.wrapper
+  .Event
+    .Event__wrapper
+      .Event__top 
+        %h1.Event__top--title.search-word= "「#{@search}」を含むイベント一覧"
+      = form_with model: @event, url: search_events_path(@search), method: :get, class: "select-form", local: true do |f|
+        = f.select :sort,[ ['----', ''],['開催の早い順', 'start_at ASC'],['開催が遅い順', 'start_at DESC'],['登録の新しい順', 'id DESC'],['登録の古い順', 'id ASC']], {}, class: "select-line"
+        = f.submit "並び替え", class: "select-btn"
+      = render partial: "shared/events", locals: { events: @events }
+    = render partial: "shared/side_bar"
+.Footer-cover

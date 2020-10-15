@@ -1,6 +1,12 @@
 class EventsController < ApplicationController
-  before_action :authenticate_user!, only: [:new]
+  before_action :authenticate_user!, only: [:new, :create]
   before_action :set_event, only: [:show, :edit, :update, :destroy]
+  before_action :move_to_root, only: [:edit, :update, :destroy]
+
+  def index
+    sort = params[:sort] || "start_at ASC"
+    @events = Event.all.includes(:user).order(sort)
+  end
 
   def new 
     @event = Event.new
@@ -40,6 +46,12 @@ class EventsController < ApplicationController
     end
   end
 
+  def search
+    sort = params[:sort] || "start_at ASC"
+    @events = Event.search(params[:keyword]).includes(:user).order(sort)
+    @search = params[:keyword] || params[:format]
+  end
+
   private
 
   def set_event
@@ -49,5 +61,9 @@ class EventsController < ApplicationController
 
   def event_params
     params.require(:event).permit(:name, :start_at, :start_time, :finish_time, :enviroment_id, :place, :explanation, :image).merge(user_id: current_user.id)
+  end
+
+  def move_to_root
+    redirect_to root_path unless user_signed_in? && current_user.id == @event.user_id
   end
 end
