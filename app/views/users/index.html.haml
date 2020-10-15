@@ -1,5 +1,9 @@
-.Event
-  .Event__top
-    %h1.Event__top--title 新着イベント情報
-  =render partial: "shared/events", locals: { events: @events }
-.Footer-cover
+.wrapper
+  .Event
+    .Event__wrapper
+      .Event__top
+        %h1.Event__top--title 新着イベント情報
+      = render partial: "shared/events", locals: { events: @events }
+    = render partial: "shared/side_bar"
+
+  .Footer-cover

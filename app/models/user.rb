@@ -9,11 +9,12 @@ class User < ApplicationRecord
 
   with_options presence: true do
     validates :name
-    validates :nickname, format: { with: nickname_REGEX, message: "サロン用アカウントを利用してください" }
+    validates :nickname
+    # validates :nickname, format: { with: nickname_REGEX, message: "サロン用アカウントを利用してください" }
   end
 
   validates :email, uniqueness: true
-  
+
   has_many :likes, dependent: :destroy
   has_many :like_events, through: :likes, source: :event
   has_many :sns_credentials
@@ -25,7 +26,7 @@ class User < ApplicationRecord
       name: auth.info.name,
       nickname: auth.info.nickname,
       email: auth.info.email,
-      image: auth.info.image,
+      image: auth.info.image.gsub(/_normal/, ''),
       
     )
 

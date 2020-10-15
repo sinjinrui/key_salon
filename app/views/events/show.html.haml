@@ -1,44 +1,62 @@
-.Detail-wrapper 
-  .Detail
-    .Detail__top
-      %h2 イベント概要
-    -if @event.image.attached?
-      = image_tag @event.image, class: "Detail__image"
-    - else
-      = image_tag "entame.jpg", class: "Detail__image"
-    %p.Detail__name
-      = "■#{@event.name}"
-      - if @event.enviroment_id == 2
-        (オフライン)
-      - else
-        (オンライン)
-    .Detail__owner
-      %p.Detail__owner--name
-        作成者
-        = link_to "https://twitter.com/#{@event.user.nickname}", class: "twitter-name", target: :_blank, rel: "noopener noreferrer" do
-          = icon("fab", "twitter")
-          = "#{@event.user.name}"
-    .Detail__date
-      %p.Detail__date--text 開催日時
-      .Detail__date--times
-        %p.start-date= "#{@event.start_at.strftime('%Y年%m月%d日')}(#{@weekday})"
-        %p.start-time= "#{@event.start_time.strftime('%H時%M分')}〜#{@event.finish_time.strftime('%H時%M分')}"
-    .Detail__place 
-      %p.Detail__place--titlt 開催場所
-      .Detail__place--text
-        - if @event.place.include?("http")
-          = link_to "#{@event.place}", "#{@event.place}", target: :_blank, rel: "noopener noreferrer"
+.wrapper
+  .Detail-cover
+    .Detail-wrapper 
+      .Detail
+        .Detail__top
+          %h2 イベント詳細
+        -if @event.image.attached?
+          = image_tag @event.image, class: "Detail__image"
         - else
-          %p= @event.place
-    .Detail__exp
-      %h3.Detail__exp--title イベント概要
-      %p.Detail__exp--text= safe_join(@event.explanation.split("\n"), tag(:br))
-    .Detail__option
-      #like
-        = render partial: "shared/like", locals: { event: @event, like: @like }
-      = link_to "https://twitter.com/share?url=#{ request.url }&text=#{ @event.name }に参加しませんか？", class: "Detail__option--tweet" do
-        ツイート
-      - if user_signed_in? && (current_user.id == @event.user_id)
-        = link_to "編集する", edit_event_path(@event), class: "Detail__option--edit"
-        = link_to "削除する", event_path(@event), method: :delete, class: "Detail__option--delete"
-.Footer-cover
+          = image_tag "entame.jpg", class: "Detail__image"
+        .Detail__guide
+          %p.Detail__name
+            = "■#{@event.name}"
+            - if @event.enviroment_id == 2
+              (オフライン)
+            - else
+              (オンライン)
+          .Detail__guide--btn
+            #like
+              = render partial: "shared/like", locals: { event: @event, like: @like }
+            = link_to "https://twitter.com/share?url=#{ request.url }&text=#{ @event.name }に参加しませんか？", class: "Detail__guide--tweet" do
+              ツイート
+            - if user_signed_in? && (current_user.id == @event.user_id)
+              = link_to "編集する", edit_event_path(@event), class: "Detail__guide--edit"
+              = link_to "削除する", event_path(@event), method: :delete, class: "Detail__guide--delete"
+        .Detail__owner
+          %p.Detail__owner--name
+            作成者(参加したい時はDMを送ろう)
+            = link_to "https://twitter.com/#{@event.user.nickname}", class: "twitter-name", target: :_blank, rel: "noopener noreferrer" do
+              = icon("fab", "twitter")
+              = "#{@event.user.name}"
+        .Detail__date
+          %p.Detail__date--text 開催日時
+          .Detail__date--times
+            %p.start-date= "#{@event.start_at.strftime('%Y年%m月%d日')}(#{@weekday})"
+            %p.start-time= "#{@event.start_time.strftime('%H時%M分')}〜#{@event.finish_time.strftime('%H時%M分')}"
+        .Detail__place 
+          %p.Detail__place--titlt 開催場所
+          .Detail__place--text
+            - if @event.place.include?("http")
+              = link_to "#{@event.place}", "#{@event.place}", target: :_blank, rel: "noopener noreferrer"
+            - else
+              %p= @event.place
+        .Image-wrapper
+          -if @event.image.attached?
+            = image_tag @event.image, class: "Detail__image--pc"
+          - else
+            = image_tag "entame.jpg", class: "Detail__image--pc"
+        .Detail__exp
+          %h3.Detail__exp--title イベント概要
+          %p.Detail__exp--text= safe_join(@event.explanation.split("\n"), tag(:br))
+        
+        .Detail__option
+          #like
+            = render partial: "shared/like", locals: { event: @event, like: @like }
+          = link_to "https://twitter.com/share?url=#{ request.url }&text=#{ @event.name }に参加しませんか？", class: "Detail__option--tweet" do
+            ツイート
+          - if user_signed_in? && (current_user.id == @event.user_id)
+            = link_to "編集する", edit_event_path(@event), class: "Detail__option--edit"
+            = link_to "削除する", event_path(@event), method: :delete, class: "Detail__option--delete"
+    = render partial: "shared/side_bar"
+  .Footer-cover

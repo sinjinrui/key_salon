@@ -1,0 +1,24 @@
+.Side-bar
+  
+  .Side-bar__images
+    %h2.Side-bar__images--title ・おすすめ
+    = link_to "https://salon.jp/nishino", class: "side-link", target: :blank, rel: "noopener noreferrer" do
+      西野亮廣エンタメ研究所
+      .image-wrapper
+        = image_tag "nishino.png", alt: "nishino-salon", class: "side-image"
+    = link_to "https://salon.jp/candy", class: "side-link", target: :blank, rel: "noopener noreferrer" do
+      スナック『キャンディ』
+      .image-wrapper 
+        = image_tag "candy.png", alt: "candy", class: "side-image"
+    = link_to "https://poupelle.com/", class: "side-link", target: :blank, rel: "noopener noreferrer" do
+      映画えんとつ町のプペル
+      .image-wrapper
+        = image_tag "poupelle.jpg", alt: "poupelle-movie", class: "side-image"
+    = link_to "https://www.youtube.com/user/mainichikingkong", class: "side-link", target: :blank, rel: "noopener noreferrer" do
+      毎週キングコング
+      .image-wrapper
+        = image_tag "kingkong.jpg", alt: "kingkong", class: "side-image"
+    = link_to "http://dwsm.zero0802.com/", class: "side-link", target: :blank, rel: "noopener noreferrer" do
+      チームスケジューラー
+      .image-wrapper
+        = image_tag "dwsm.jpg", alt: "dwsm", class: "side-image"

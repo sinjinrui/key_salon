@@ -1,11 +1,33 @@
 .Header
   .Header__left 
-    = link_to "つながるサロン村(仮)", root_path, class: "Header__left--link"
+    = link_to "Tsunagaru.jp", root_path, class: "Header__left--link"
   .Header__right
     %ul.Header__right--menu
       %li.menu-line.line1
       %li.menu-line.line2
       %li.menu-line.line3
+  .Header__center--pc
+    = form_with(url: search_events_path, local: true, method: :get, class: "search-form-pc") do |f|
+      = f.text_field :keyword, placeholder: "イベントを検索", class: "search-input-pc"
+      = button_tag type: "submit", class: "search-icon-pc" do
+        = icon("fas", "search")
+    - if user_signed_in?
+      = link_to new_event_path, class: "menu-list-pc" do
+        イベントを作る
+        %span
+    = link_to events_path, class: "menu-list-pc" do
+      イベントを見る
+      %span
+  .Header__right--pc
+    -if user_signed_in?
+      = link_to user_path(current_user.id), class: "menu-list-pc" do
+        = current_user.name
+        %span
+      = button_to "ログアウト", destroy_user_session_path, class: "menu-list-pc button_to-pc", method: :delete
+    - else
+      = link_to "ログイン", new_user_session_path, class: "menu-list-pc button_to-pc"
+
+
 .Cover
 
 .Bc-menu
@@ -22,7 +44,8 @@
         = icon("fas", "search")
     = link_to "このサイトについて", "#", class: "Menu-list"
     - if user_signed_in?
-      %p.Menu-list= current_user.name
+      =link_to "#{current_user.name}", user_path(current_user.id), class: "Menu-list"
+      = link_to "イベントをつくる", new_event_path, class: "Menu-list"
       = button_to "ログアウト", destroy_user_session_path, class: "Menu-list button_to", method: :delete
     - else 
       = link_to "ログイン", new_user_session_path, class: "Menu-list"

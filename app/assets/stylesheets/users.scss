@@ -9,6 +9,16 @@
     border: 2px solid #000070;
   }
 
+  .Event__content-pc {
+    display: none;
+  }
+
+  .Event-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
   .Event {
     width: 100vw;
     display: flex;
@@ -95,13 +105,205 @@
       position: relative;
       .bg-image {
         width: 100%;
+        opacity: 0.7;
       }
       .my-image {
         position: absolute;
-        top: 30%;
-        left: 5%;
+        bottom: -23%;
+        right: 5%;
+        border: 3px solid #fff;
         border-radius: 50%;
         width: 30%;
+      }
+    }
+    &__profile {
+      &--content {
+        li {
+          font-weight: bold;
+        }
+        padding-bottom: 20px;
+        margin: 0 15px;
+        border-bottom: 2px solid #797979;
+        .twitter-name {
+          color: #fff;
+          background-color: #000000;
+          padding: 3px 5px;
+          border-radius: 3px;
+          &:hover {
+            background-color: #777777;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 601px) {
+
+  .wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .offline {
+    background-color: #fffcfb;
+    border: 2px solid #770000;
+  }
+
+  .online {
+    background-color: #f5f7ff;
+    border: 2px solid #000070;
+  }
+
+  .Event {
+    width: 1040px;
+    display: flex;
+    justify-content: space-between;
+    &__wrapper {
+      width: 740px;
+      padding: 2%;
+    }
+    &__top {
+      width: 100%;
+      height: 60px;
+      background-color: #646464;
+      display: flex;
+      align-items: center;
+      padding-left: 20px;
+      &--title {
+        color: #fff;
+        font-size: 25px;
+      }
+    }
+    &__contents {
+      width: 700px;
+      margin-top: 30px;
+    }
+    &__content {
+      display: none;
+    }
+    &__content-pc {
+      display: flex;
+      margin-bottom: 30px;
+      &--left {
+        width: 120px;
+        height: 250px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: #000000;
+        .content-date {
+          line-height: 50px;
+          font-weight: bold;
+          color: #fff;
+        }
+        .content-time {
+          line-height: 50px;
+          color: #fff;
+        }
+        .content-env {
+          line-height: 150px;
+          font-weight: bold;
+          color: #ffffff;
+        }
+      }
+      &--right {
+        display: flex;
+        justify-content: space-between;
+        width: calc(100% - 120px);
+        .content-left {
+          width: 50%;
+          padding: 2%;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: space-between;
+          &__name {
+            font-weight: bold;
+          }
+          .content-image {
+            width: 250px;
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            &__file {
+              max-width: 240px;
+              max-height: 180px;
+            }
+          }
+        }
+        .content-right {
+          width: 280px;
+          &__title {
+            line-height: 50px;
+          }
+          &__exp {
+            height: 150px;
+            overflow: scroll;
+          }
+          &__owner {
+            height: 50px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            padding-right: 4px;
+            &--show {
+              font-weight: bold;
+              background-color: #000;
+              color: #fff;
+              padding: 0 4px;
+              &:hover {
+                opacity: 0.7;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  .My-page {
+    width: 740px;
+    padding: 2%;
+    display: flex;
+    flex-direction: column;
+    // justify-content: space-between;
+    &__contents {
+
+    }
+    &__image {
+      position: relative;
+      .bg-image {
+        width: 700px;
+        opacity: 0.7;
+      }
+      .my-image {
+        width: 220px;
+        border-radius: 50%;
+        border: 3px solid #fff;
+        position: absolute;
+        right: 5%;
+        bottom: 10%;
+      }
+    }
+    &__profile {
+      width: 100%;
+      border-bottom: 1px solid #000;
+      margin-bottom: 15px;
+      padding-bottom: 3px;
+      &--content {
+        li {
+          font-weight: bold;
+          font-size: 20px;
+        }
+        .twitter-name {
+          background-color: #000;
+          color: #fff;
+          padding: 6px;
+          font-size: 20px;
+          border-radius: 3px;
+        }
       }
     }
   }

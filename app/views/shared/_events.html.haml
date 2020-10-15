@@ -1,39 +1,78 @@
 .Event__contents
   - if events.exists?
-    - events.first(20).each do |event|
-      - if event.enviroment_id == 2
-        .Event__content.offline
-          .Event__content--top 
-            .Event-title= "■#{event.name}"
-          .Event__content--wrap
-            .content-image
-              - if event.image.attached?
-                = image_tag event.image, class: "content-image__file"
-              - else
-                = image_tag "entame.jpg", class: "content-image__file"
-            .content-right
-              - if event.enviroment_id == 2
-                %p.line-text オフライン開催
-              - else
-                %p.line-text オンライン開催
-              .content-date= "#{event.start_at.strftime('%Y年%m月%d日')}(#{@wday[event.start_at.wday]})"
-              = link_to "詳細を見る", event_path(event.id), class: "content-show"
-      - else
-        .Event__content.online
-          .Event__content--top 
-            .Event-title= "■#{event.name}"
-          .Event__content--wrap
-            .content-image
-              - if event.image.attached?
-                = image_tag event.image, class: "content-image__file"
-              - else
-                = image_tag "entame.jpg", class: "content-image__file"
-            .content-right
-              - if event.enviroment_id == 2
-                %p.line-text オフライン開催
-              - else
-                %p.line-text オンライン開催
-              .content-date= "#{event.start_at.strftime('%Y年%m月%d日')}(#{@wday[event.start_at.wday]})"
-              = link_to "詳細を見る", event_path(event.id), class: "content-show"
+    - events.first(10).each do |event|
+      - if event.start_at > Date.today
+        - if event.enviroment_id == 2
+          .Event__content-pc.offline
+            .Event__content-pc--left
+              .content-date= "#{event.start_at.strftime('%m月%d日')}"
+              .content-time= "#{event.start_time.strftime('%H時%M分')}〜"
+              .content-env オフライン
+            .Event__content-pc--right
+              .content-left 
+                .content-left__name= "■#{event.name}"
+                .content-image
+                  - if event.image.attached?
+                    = image_tag event.image, class: "content-image__file"
+                  - else
+                    = image_tag "entame.jpg", class: "content-image__file"
+              .content-right 
+                .content-right__title ・イベント概要
+                .content-right__exp= safe_join(event.explanation.split("\n"), tag(:br))
+                .content-right__owner
+                  .content-right__owner--name= "作成者：#{event.user.name}"
+                  = link_to "詳細を見る", event_path(event.id), class: "content-right__owner--show"
+          .Event__content.offline
+            .Event__content--top
+              .Event-title= "■#{event.name}"
+            .Event__content--wrap
+              .content-image
+                - if event.image.attached?
+                  = image_tag event.image, class: "content-image__file"
+                - else
+                  = image_tag "entame.jpg", class: "content-image__file"
+              .content-right
+                - if event.enviroment_id == 2
+                  %p.line-text オフライン開催
+                - else
+                  %p.line-text オンライン開催
+                .content-date= "#{event.start_at.strftime('%Y年%m月%d日')}(#{@wday[event.start_at.wday]})"
+                = link_to "詳細を見る", event_path(event.id), class: "content-show"
+        - else
+          .Event__content-pc.online
+            .Event__content-pc--left
+              .content-date= "#{event.start_at.strftime('%m月%d日')}"
+              .content-time= "#{event.start_time.strftime('%H時%M分')}〜"
+              .content-env オンライン
+            .Event__content-pc--right
+              .content-left 
+                .content-left__name= "■#{event.name}"
+                .content-image
+                  - if event.image.attached?
+                    = image_tag event.image, class: "content-image__file"
+                  - else
+                    = image_tag "entame.jpg", class: "content-image__file"
+              .content-right 
+                .content-right__title ・イベント概要
+                .content-right__exp= safe_join(event.explanation.split("\n"), tag(:br))
+                .content-right__owner
+                  .content-right__owner--name= "作成者：#{event.user.name}"
+                  = link_to "詳細を見る", event_path(event.id), class: "content-right__owner--show"
+          .Event__content.online
+            .Event__content--top 
+              .Event-title= "■#{event.name}"
+            .Event__content--wrap
+              .content-image
+                - if event.image.attached?
+                  = image_tag event.image, class: "content-image__file"
+                - else
+                  = image_tag "entame.jpg", class: "content-image__file"
+              .content-right
+                - if event.enviroment_id == 2
+                  %p.line-text オフライン開催
+                - else
+                  %p.line-text オンライン開催
+                .content-date= "#{event.start_at.strftime('%Y年%m月%d日')}(#{@wday[event.start_at.wday]})"
+                = link_to "詳細を見る", event_path(event.id), class: "content-show"
   - else
     %p.event-nil 一致したイベントはありませんでした

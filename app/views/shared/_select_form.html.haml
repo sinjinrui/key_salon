@@ -1,0 +1,3 @@
+= form_with model: @event, url: events_path, method: :get, class: "select-form", local: true do |f|
+  = f.select :sort,[ ['----', ''],['開催の早い順', 'start_at ASC'],['開催が遅い順', 'start_at DESC'],['登録の新しい順', 'id DESC'],['登録の古い順', 'id ASC']], {}, class: "select-line"
+  = f.submit "並び替え", class: "select-btn"

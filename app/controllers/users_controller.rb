@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   
 
   def index 
-    @events = Event.all.order(id: "DESC")
+    @events = Event.all.includes(:user).order(id: "DESC")
   end
 
   def new
@@ -11,7 +11,8 @@ class UsersController < ApplicationController
 
   def show 
     @user = User.find(params[:id])
-    @events = current_user.like_events.order(start_at: "ASC")
+    sort = params[:sort] || "start_at ASC"
+    @events = current_user.like_events.includes(:user).order(sort)
   end
 
 end
