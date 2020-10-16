@@ -186,7 +186,15 @@
     }
   }
 
+  .Cover {
+    height: 70px;
+    width: 100vw;
+  }
+
   .Header {
+    z-index: 30;
+    background-color: #fff;
+    position: fixed;
     padding: 15px 30px;
     width: 100vw;
     height: 70px;
