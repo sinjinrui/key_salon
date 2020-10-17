@@ -3,28 +3,32 @@
     .Create
       .Create-title
         %h2 イベント編集
-      = form_with model: @event, local: true do |f|
+      = form_with model: @event, class: "event-form_with", local: true do |f|
         .Create__name
           %li.Create__name--label
             イベント名
             %span.require 必須
           = f.text_field :name, class: "name-field event-form"
+          %span.validate
         .Create__exp
           %li.Create__exp--label
             イベント概要
             %span.require 必須
           = f.text_area :explanation, class: "exp-field event-form"
+          %span.validate
         .Create__env
           %li.Create__env--label
             オフライン/オンライン
             %span.require 必須
           = f.collection_select(:enviroment_id, Enviroment.all, :id, :name, {},{class: "env-field event-form"})
+          %span.validate
         .Create__schedule
           .Create__schedule--date
             %li.Create__schedule--date-label
               開催日
               %span.require 必須
             = f.date_field :start_at, class: "date-field event-form"
+            %span.validate
           .Times-div
             .Create__schedule--stime
               %li.Create__schedule--stime-label
@@ -39,6 +43,7 @@
             開催場所/URL
             %span.require 必須
           = f.text_field :place, class: "place_field event-form"
+          %span.validate
         .Create__image 
           %li.Create__image--label イメージ画像
           = f.file_field :image, class: "image-field event-form", id: "filename"

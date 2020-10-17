@@ -308,6 +308,16 @@
     font-size: 12px;
   }
 
+  .validate {
+    display: none;
+    color: red;
+    padding-top: 5px;
+  }
+
+  .errors {
+    display: block;
+  }
+
   .event-form {
     padding: 6px;
   }
