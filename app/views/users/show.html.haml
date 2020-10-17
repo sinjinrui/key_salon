@@ -1,16 +1,4 @@
 .wrapper
-  -# .My-page
-  -#   .My-page__contents
-  -#     .My-page__image
-  -#       = image_tag "entame.jpg", class: "bg-image"
-  -#       = image_tag "#{@user.image}", class: "my-image"
-  -#     .My-page__profile
-  -#       .My-page__profile--content
-  -#         %li アカウント
-  -#         = link_to "https://twitter.com/#{@user.nickname}", class: "twitter-name", target: :_blank, rel: "noopener noreferrer" do
-  -#           = icon("fab", "twitter")
-  -#           = "#{@user.name}"
-  -#   = render partial: "shared/side_bar"
   .Event
     .My-page
       .My-page__contents
@@ -26,10 +14,10 @@
       .Event-wrapper
         .Event__top
           %h1.Event__top--title 気になるイベント一覧
-        .Event__contents
-          = form_with model: @event, url: user_path(current_user.id), method: :get, class: "select-form", local: true do |f|
-            .select-form__block
-              = f.select :sort,[ ['----', ''],['開催の早い順', 'start_at ASC'],['開催が遅い順', 'start_at DESC'],['登録の新しい順', 'id DESC'],['登録の古い順', 'id ASC']], {}, class: "select-line"
-              = f.submit "並び替え", class: "select-btn"
+        = form_with model: @event, url: user_path(current_user.id), method: :get, class: "select-form", local: true do |f|
+          .select-form__block
+            = f.select :sort,[ ['----', ''],['開催の早い順', 'start_at ASC'],['開催が遅い順', 'start_at DESC'],['登録の新しい順', 'id DESC'],['登録の古い順', 'id ASC']], {}, class: "select-line"
+            = f.submit "並び替え", class: "select-btn"
+        .Event__contents.jscroll
           = render partial: "shared/like_events", locals: { events: @events }
     = render partial: "shared/side_bar"

@@ -7,6 +7,10 @@
     padding: 2px 3px;
   }
 
+  nav.pagination {
+    display: none;
+  }
+
   #filename { display: none; }
 
   .event-form {
@@ -275,6 +279,10 @@
 
 
 @media screen and (min-width: 601px) {
+
+  nav.pagination {
+    display: none;
+  }
 
   #filename { display: none; }
 
