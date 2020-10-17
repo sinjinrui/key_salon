@@ -5,6 +5,8 @@
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
     %title KeySalon
     %link{href: "https://fonts.googleapis.com/css?family=Economica:700 ", rel: "stylesheet"}
+    %script{:src => "https://cdnjs.cloudflare.com/ajax/libs/jscroll/2.4.1/jquery.jscroll.min.js"}
+
     = csrf_meta_tags
     = csp_meta_tag
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'

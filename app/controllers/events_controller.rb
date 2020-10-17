@@ -5,7 +5,7 @@ class EventsController < ApplicationController
 
   def index
     sort = params[:sort] || "start_at ASC"
-    @events = Event.all.includes(:user).order(sort)
+    @events = Event.page(params[:page]).includes(:user).order(sort).per(10)
   end
 
   def new 
@@ -48,7 +48,7 @@ class EventsController < ApplicationController
 
   def search
     sort = params[:sort] || "start_at ASC"
-    @events = Event.search(params[:keyword]).includes(:user).order(sort)
+    @events = Event.search(params[:keyword]).page(params[:page]).includes(:user).order(sort).per(10)
     @search = params[:keyword] || params[:format]
   end
 
