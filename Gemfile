@@ -62,3 +62,7 @@ gem 'jquery-rails'
 gem 'active_hash'
 gem 'mini_magick'
 gem 'kaminari'
+
+group :production do
+  gem 'unicorn', '5.4.1'
+end
