@@ -480,6 +480,7 @@
           justify-content: space-between;
           border-bottom: 1px solid #000;
           &--btn {
+            height: 30px;
             display: flex;
             font-size: 15px;
             margin-bottom: 5px;
@@ -551,6 +552,8 @@
         }
         &__name {
           font-size: 20px;
+          max-width: 350px;
+          overflow: scroll;
         }
         &__option {
           display: none;
