@@ -5,7 +5,7 @@
     - if event.image.attached?
       = image_tag event.image, class: "content-image__file"
     - else
-      = image_tag "entame.jpg", class: "content-image__file"
+      = image_tag "no_image.jpg", class: "content-image__file"
   .content-right
     - if event.enviroment_id == 2
       %p.line-text オフライン開催

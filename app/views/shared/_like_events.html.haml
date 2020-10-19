@@ -13,7 +13,7 @@
               - if event.image.attached?
                 = image_tag event.image, class: "content-image__file"
               - else
-                = image_tag "entame.jpg", class: "content-image__file"
+                = image_tag "no_image.jpg", class: "content-image__file"
           .content-right 
             .content-right__title ・イベント概要
             .content-right__exp= safe_join(event.explanation.split("\n"), tag(:br))
@@ -28,7 +28,7 @@
             - if event.image.attached?
               = image_tag event.image, class: "content-image__file"
             - else
-              = image_tag "entame.jpg", class: "content-image__file"
+              = image_tag "no_image.jpg", class: "content-image__file"
           .content-right
             - if event.enviroment_id == 2
               %p.line-text オフライン開催
@@ -49,7 +49,7 @@
               - if event.image.attached?
                 = image_tag event.image, class: "content-image__file"
               - else
-                = image_tag "entame.jpg", class: "content-image__file"
+                = image_tag "no_image.jpg", class: "content-image__file"
           .content-right 
             .content-right__title ・イベント概要
             .content-right__exp= safe_join(event.explanation.split("\n"), tag(:br))
@@ -64,7 +64,7 @@
             - if event.image.attached?
               = image_tag event.image, class: "content-image__file"
             - else
-              = image_tag "entame.jpg", class: "content-image__file"
+              = image_tag "no_image.jpg", class: "content-image__file"
           .content-right
             - if event.enviroment_id == 2
               %p.line-text オフライン開催

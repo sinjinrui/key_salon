@@ -7,7 +7,7 @@
         -if @event.image.attached?
           = image_tag @event.image, class: "Detail__image"
         - else
-          = image_tag "entame.jpg", class: "Detail__image"
+          = image_tag "no_image.jpg", class: "Detail__image"
         .Detail__guide
           %p.Detail__name
             = "■#{@event.name}"
@@ -45,7 +45,7 @@
           -if @event.image.attached?
             = image_tag @event.image, class: "Detail__image--pc"
           - else
-            = image_tag "entame.jpg", class: "Detail__image--pc"
+            = image_tag "no_image.jpg", class: "Detail__image--pc"
         .Detail__exp
           %h3.Detail__exp--title イベント概要
           %p.Detail__exp--text= safe_join(@event.explanation.split("\n"), tag(:br))

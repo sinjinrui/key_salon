@@ -94,14 +94,15 @@
   }
 
   .search-input {
+    height: 30px;
     width: 180px;
   }
 
   .search-icon {
     position: absolute;
     left: 150px;
-    top: 3px;
-    font-size: 20px;
+    top: 4px;
+    font-size: 18px;
     border: none;
     background: none;
     cursor: pointer;
@@ -138,6 +139,10 @@
       &:hover {
         border-bottom: 1px solid #0b00a0;
       }
+    }
+    .link-menu {
+      font-weight: bold;
+      margin-top: 20px;
     }
   }
 
@@ -213,10 +218,13 @@
       display: flex;
       .search-form-pc {
         position: relative;
+        .search-input-pc {
+          height: 28px;
+        }
         .search-icon-pc {
           position: absolute;
           right: 5px;
-          top: 6px;
+          top: 5px;
           background-color: #fff;
           border: none;
           cursor: pointer;

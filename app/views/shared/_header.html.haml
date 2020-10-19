@@ -49,3 +49,9 @@
       = button_to "ログアウト", destroy_user_session_path, class: "Menu-list button_to", method: :delete
     - else 
       = link_to "ログイン", new_user_session_path, class: "Menu-list"
+    %h3.link-menu おすすめ
+    = link_to "Qiita", "https://qiita.com/", class: "Menu-list"
+    = link_to "teratail", "https://teratail.com/", class: "Menu-list"
+    = link_to "github", "github.jpg", class: "Menu-list"
+    = link_to "fontawesome", "https://fontawesome.com/", class: "Menu-list"
+    = link_to "チームスケジューラー", "http://dwsm.zero0802.com/", class: "Menu-list"
