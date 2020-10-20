@@ -1,5 +1,5 @@
 # config valid for current version and patch releases of Capistrano
-lock "~> 3.14.1"
+lock '3.14.1'
 
 set :application, "key_salon"
 set :repo_url, "git@github.com:sinjinrui/key_salon.git"
@@ -17,7 +17,7 @@ set :unicorn_pid, -> { "#{shared_path}/tmp/pids/unicorn.pid" }
 set :unicorn_config_path, -> { "#{current_path}/config/unicorn.rb" }
 set :keep_releases, 5
 
-ahter 'deploy:publishing', 'deploy:restart'
+after 'deploy:publishing', 'deploy:restart'
 namespace :deploy do
   task :restart do
     invoke 'unicorn:restart'
