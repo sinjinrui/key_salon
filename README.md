@@ -4,10 +4,10 @@
 tsunagaru.jpは、ツイッターアカウント同士をイベントでつなげるマッチングアプリケーション
 
 # URL
-未定
+http://54.150.206.137/
 
 # DEMO
-未定
+[![Image from Gyazo](https://i.gyazo.com/7ff10ecad06ea81fbd72a4a819246915.png)](https://gyazo.com/7ff10ecad06ea81fbd72a4a819246915)
 
 # 機能一覧
 ・ツイッターアカウントによるユーザー登録・マイページ・ログイン機能  
@@ -26,7 +26,8 @@ tsunagaru.jpは、ツイッターアカウント同士をイベントでつな�
 ・Jquery   
 ・GitHub  
 ・Mysql  
-・AWS  
+・AWS 
+・Nginx 
 
 # USAGE
 1:Twitterアカウントでサインアップ及びログイン  
@@ -44,7 +45,7 @@ Ruby 2.6.5
 Ruby on Rails 6.0.3.2  
 
 ## 動作までのコマンド
-git clone 
+git clone https://github.com/sinjinrui/key_salon.git
 bundle install  
 yarn install  
 rails db:create  
